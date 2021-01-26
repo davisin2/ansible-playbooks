@@ -1,0 +1,36 @@
+version: '3'
+services:
+  ansible_controller:
+    container_name: ansible_controller
+    image: ansible_controller
+    hostname: 'ansiblecontroller'
+    build:
+      context: controller
+    stdin_open: true          # docker run -i
+    tty: true                 # docker run -t
+    volumes:
+      - $PWD/playbooks:/playbooks
+    networks:
+      - net
+  ansible_target1:
+    container_name: ansible_target1
+    image: ansible_target
+    hostname: 'target1'
+    build:
+      context: target
+    stdin_open: true          # docker run -i
+    tty: true                 # docker run -t
+    networks:
+      - net
+  ansible_target2:
+    container_name: ansible_target2
+    image: ansible_target
+    hostname: 'target2'
+    build:
+      context: target
+    stdin_open: true          # docker run -i
+    tty: true                 # docker run -t
+    networks:
+      - net
+networks:
+  net:

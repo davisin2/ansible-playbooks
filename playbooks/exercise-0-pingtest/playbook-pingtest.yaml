@@ -1,0 +1,7 @@
+# This document can be used to test the connnectivity from controller to target servers
+-
+  name: Test Connectivity to target servers
+  hosts: all
+  tasks:
+    -  name: Ping Test
+       ping:
